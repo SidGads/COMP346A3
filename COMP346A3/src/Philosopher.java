@@ -1,5 +1,7 @@
 import common.BaseThread;
 
+import java.util.Random;
+
 /**
  * Class Philosopher.
  * Outlines main subrutines of our virtual philosopher.
@@ -50,7 +52,21 @@ public class Philosopher extends BaseThread
 	 */
 	public void think()
 	{
-		// ...
+		try
+		{
+			System.out.println(this.getTID()+" has started thinking");
+			Thread.yield();
+			sleep((long)(Math.random() * TIME_TO_WASTE));
+			Thread.yield();
+			System.out.println(this.getTID()+" has finished thinking");
+			// ...
+		}
+		catch(InterruptedException e)
+		{
+			System.err.println("Philosopher.think():");
+			DiningPhilosophers.reportException(e);
+			System.exit(1);
+		}
 	}
 
 	/**
@@ -63,12 +79,15 @@ public class Philosopher extends BaseThread
 	 */
 	public void talk()
 	{
-		// ...
 
-		saySomething();
+        System.out.println(this.getTID()+" has started Talking");
+        Thread.yield();
+        saySomething();
+        Thread.yield();
+        System.out.println(this.getTID()+" has finished thinking");
+        // ...
 
-		// ...
-	}
+    }
 
 	/**
 	 * No, this is not the act of running, just the overridden Thread.run()
@@ -90,7 +109,8 @@ public class Philosopher extends BaseThread
 			 * A decision is made at random whether this particular
 			 * philosopher is about to say something terribly useful.
 			 */
-			if(true == false)
+			Random randy = new Random();
+			if(randy.nextInt(10) % 2 == 0)
 			{
 				// Some monitor ops down here...
 				talk();
