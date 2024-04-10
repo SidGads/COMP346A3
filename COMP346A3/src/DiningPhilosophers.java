@@ -1,3 +1,5 @@
+import java.util.Scanner;
+
 /**
  * Class DiningPhilosophers
  * The main starter.
@@ -48,6 +50,16 @@ public class DiningPhilosophers
 			 */
 			int iPhilosophers = DEFAULT_NUMBER_OF_PHILOSOPHERS;
 
+			Scanner scanny = new Scanner(System.in);
+			System.out.println("Please enter number of philosophers: ");
+			String stringy = scanny.next();
+			if (stringy != null && !stringy.isEmpty() && isInteger(stringy)){
+				int thinkingPeople = Integer.parseInt(stringy);
+				if(thinkingPeople > 0){
+					iPhilosophers = thinkingPeople;
+				}
+			}
+
 			// Make the monitor aware of how many philosophers there are
 			soMonitor = new Monitor(iPhilosophers);
 
@@ -92,6 +104,15 @@ public class DiningPhilosophers
 		System.err.println("Message          : " + poException.getMessage());
 		System.err.println("Stack Trace      : ");
 		poException.printStackTrace(System.err);
+	}
+
+	public static boolean isInteger(String str) {
+		try {
+			Integer.parseInt(str);
+			return true;
+		} catch (NumberFormatException e) {
+			return false;
+		}
 	}
 }
 
