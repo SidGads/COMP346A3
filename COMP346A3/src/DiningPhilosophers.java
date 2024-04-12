@@ -58,6 +58,12 @@ public class DiningPhilosophers
 				if(thinkingPeople > 0){
 					iPhilosophers = thinkingPeople;
 				}
+				else {
+					System.out.println(stringy + " is not a positive integer");
+				}
+			}
+			else {
+				System.out.println(stringy + " Is not an integer");
 			}
 
 			// Make the monitor aware of how many philosophers there are
