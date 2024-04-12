@@ -12,6 +12,9 @@ public class Monitor
 	 * ------------
 	 */
 
+	int numOfChopsticks = 2;
+	boolean[] chopsticks;
+
 
 	/**
 	 * Constructor
@@ -19,8 +22,11 @@ public class Monitor
 	public Monitor(int piNumberOfPhilosophers)
 	{
 		// TODO: set appropriate number of chopsticks based on the # of philosophers
-
-
+		if(piNumberOfPhilosophers >2){
+			// This assumes that there should sit 1 chopstick between each philosopher. Otherwise, we can double this number and every philosopher will have their own set of chopsticks
+			numOfChopsticks = piNumberOfPhilosophers/* *2;// */;
+		}
+		chopsticks = new boolean[numOfChopsticks];
 	}
 
 	/*
