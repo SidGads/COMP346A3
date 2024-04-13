@@ -49,10 +49,11 @@ public class DiningPhilosophers
 			 * or the default if no arguments supplied.
 			 */
 			int iPhilosophers = DEFAULT_NUMBER_OF_PHILOSOPHERS;
-
+			//Creating a scanner object to take the user's input for number of philosophers
 			Scanner scanny = new Scanner(System.in);
 			System.out.println("Please enter number of philosophers: ");
 			String stringy = scanny.next();
+			//various checks to ensure that the user provided value is a positive integer, as well as assign the new value if it is appropriate
 			if (stringy != null && !stringy.isEmpty() && isInteger(stringy)){
 				int thinkingPeople = Integer.parseInt(stringy);
 				if(thinkingPeople > 0){
@@ -112,6 +113,7 @@ public class DiningPhilosophers
 		poException.printStackTrace(System.err);
 	}
 
+	//this is just a small methode to confirm if a given string is an integer
 	public static boolean isInteger(String str) {
 		try {
 			Integer.parseInt(str);
