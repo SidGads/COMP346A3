@@ -70,7 +70,7 @@ public class DiningPhilosophers
 			soMonitor = new Monitor(iPhilosophers);
 
 			// Space for all the philosophers
-			Philosopher aoPhilosophers[] = new Philosopher[iPhilosophers];
+			Philosopher aoPhilosophers[] = new Philosopher[iPhilosophers+1];
 
 			// Let 'em sit down
 			for(int j = 0; j < iPhilosophers; j++)

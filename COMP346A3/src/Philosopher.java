@@ -27,11 +27,11 @@ public class Philosopher extends BaseThread
 	{
 		try
 		{
-			System.out.println(this.getTID()+" has started eating");
+			System.out.println((this.getTID()+1)+" has started eating");
 			Thread.yield();
 			sleep((long)(Math.random() * TIME_TO_WASTE));
 			Thread.yield();
-			System.out.println(this.getTID()+" has finished eating");
+			System.out.println((this.getTID()+1)+" has finished eating");
 			// ...
 		}
 		catch(InterruptedException e)
@@ -54,11 +54,11 @@ public class Philosopher extends BaseThread
 	{
 		try
 		{
-			System.out.println(this.getTID()+" has started thinking");
+			System.out.println((this.getTID()+1)+" has started thinking");
 			Thread.yield();
 			sleep((long)(Math.random() * TIME_TO_WASTE));
 			Thread.yield();
-			System.out.println(this.getTID()+" has finished thinking");
+			System.out.println((this.getTID()+1)+" has finished thinking");
 			// ...
 		}
 		catch(InterruptedException e)
@@ -80,11 +80,11 @@ public class Philosopher extends BaseThread
 	public void talk()
 	{
 
-        System.out.println(this.getTID()+" has started Talking");
+        System.out.println((this.getTID()+1)+" has started Talking");
         Thread.yield();
         saySomething();
         Thread.yield();
-        System.out.println(this.getTID()+" has finished thinking");
+        System.out.println((this.getTID()+1)+" has finished Talking");
         // ...
 
     }
@@ -113,7 +113,9 @@ public class Philosopher extends BaseThread
 			if(randy.nextInt(10) % 2 == 0)
 			{
 				// Some monitor ops down here...
+				DiningPhilosophers.soMonitor.requestTalk(getTID());
 				talk();
+				DiningPhilosophers.soMonitor.endTalk(getTID());
 				// ...
 			}
 
@@ -133,12 +135,12 @@ public class Philosopher extends BaseThread
 			"You know, true is false and false is true if you think of it",
 			"2 + 2 = 5 for extremely large values of 2...",
 			"If thee cannot speak, thee must be silent",
-			"My number is " + getTID() + ""
+			"My number is " + (getTID()+1) + ""
 		};
 
 		System.out.println
 		(
-			"Philosopher " + getTID() + " says: " +
+			"Philosopher " + (getTID()+1) + " says: " +
 			astrPhrases[(int)(Math.random() * astrPhrases.length)]
 		);
 	}
