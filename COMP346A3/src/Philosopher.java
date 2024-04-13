@@ -109,6 +109,7 @@ public class Philosopher extends BaseThread
 			 * A decision is made at random whether this particular
 			 * philosopher is about to say something terribly useful.
 			 */
+			//This is Randy, he decides if a Philosopher decides to talk. His favourite type of number is even
 			Random randy = new Random();
 			if(randy.nextInt(10) % 2 == 0)
 			{
