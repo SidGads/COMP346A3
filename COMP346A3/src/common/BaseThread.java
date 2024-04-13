@@ -26,6 +26,8 @@ public class BaseThread extends Thread
 	/**
 	 * Preserves value across all instances
 	 */
+
+	//turned this to 0 because there was index out of bounds error
 	public static int siNextTID = 0;
 
 	/**

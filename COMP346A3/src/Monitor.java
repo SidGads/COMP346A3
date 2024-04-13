@@ -5,6 +5,8 @@ public class Monitor {
 	private final int numOfPhilosophers;
 	private boolean isTalking = false; // Tracks if any philosopher is currently talking
 
+
+	// Constructor
 	public Monitor(int numOfPhilosophers) {
 		this.numOfPhilosophers = numOfPhilosophers;
 		state = new State[numOfPhilosophers];
@@ -15,6 +17,7 @@ public class Monitor {
 		}
 	}
 
+	// Request to talk
 	public void requestTalk(int piTID) {
 		synchronized (self[piTID]) {
 			while (isTalking || state[piTID] == State.EATING) {
@@ -28,6 +31,7 @@ public class Monitor {
 		}
 	}
 
+	// End the talk
 	public void endTalk(int piTID) {
 		synchronized (self[piTID]) {
 			isTalking = false;
@@ -35,6 +39,7 @@ public class Monitor {
 		}
 	}
 
+	// Pick up the chopsticks
 	public void pickUp(int piTID) {
 		synchronized (self[piTID]) {
 			state[piTID] = State.HUNGRY;
@@ -49,6 +54,7 @@ public class Monitor {
 		}
 	}
 
+	// Put down the chopsticks
 	public void putDown(int piTID) {
 		synchronized (self[piTID]) {
 			state[piTID] = State.THINKING;
@@ -58,6 +64,7 @@ public class Monitor {
 		}
 	}
 
+	// Test if the current philosopher can eat
 	private void test(int piTID) {
 		int left = (piTID + numOfPhilosophers - 1) % numOfPhilosophers;
 		int right = (piTID + 1) % numOfPhilosophers;
